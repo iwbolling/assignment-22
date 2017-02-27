@@ -6,7 +6,7 @@ import Backbone from "backbone";
 import {MegsListingModel,MegsListingCollection} from "./_models.js";
 
 // IMPORTS - VIEWS
-import {AllListingsView,AddItemFormView} from "./_views.js";
+import {AllListingsView,AddItemFormView,SingleItemView} from "./_views.js";
 
 // VARIABLES - HTML DOM ELEMENTS
 let divWholePage = document.querySelector("#app-container");
@@ -28,6 +28,15 @@ const AppRouter = Backbone.Router.extend({
     listingsCollInstance.fetch().then(function(){
       let listingsViewInstance = new AllListingsView();
       listingsViewInstance.render(listingsCollInstance.models);
+    })
+  },
+
+  showSingleItem: function(givenID){
+    let listingModelInstance = new MegsListingModel(givenID);
+    listingModelInstance.set({_id: givenID});
+    listingModelInstance.fetch().then(function(){
+      let singleItemViewInstance = new SingleItemView();
+      singleItemViewInstance.render(listingModelInstance);
     })
   },
 

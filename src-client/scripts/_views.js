@@ -42,9 +42,9 @@ export const AddItemFormView = Backbone.View.extend({
     let formEl = evt.target;
     let dataToSave = {
       item: formEl.item.value,
-      category: formEl.category.value,
+      category: formEl.category.value.toLowerCase(),
       price: parseInt(formEl.price.value),
-      // forSale: formEl.forSale.value,
+      forSale: formEl.forSale.value,
       imgLink: formEl.imgLink.value,
       description: formEl.description.value
     };
@@ -72,7 +72,7 @@ export const AddItemFormView = Backbone.View.extend({
               </div>
               <div class="field_forsale">
                 <label>For Sale</label>
-                <input type="checkbox" name="forSale" placeholder=""/>
+                <input type="checkbox" name="forSale" placeholder="" value="true"/>
               </div>
               <div class="field_image">
                 <label>Image Link</label>
@@ -90,3 +90,42 @@ export const AddItemFormView = Backbone.View.extend({
     this.el.innerHTML = this._itemFormTemplate();
   }
 });
+
+export const SingleItemView = Backbone.View.extend({
+  el: ".route-container",
+
+  _singleListingTemplate: function(givenModel){
+    return `<h2>Listing View</h2>
+            <div class="columns-container">
+              <div class="image-column">
+                <img src="${givenModel.get("imgLink")}">
+              </div>
+              <div class="info-column">
+                <table class="listing-table">
+                  <tr>
+                    <td>Item</td>
+                    <td>${givenModel.get("item")}</td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                    <td>${givenModel.get("category")}</td>
+                  </tr>
+                  <tr>
+                    <td>Price</td>
+                    <td>${givenModel.get("price")}</td>
+                  </tr>
+                  <tr>
+                    <td>For Sale?</td>
+                    <td>${givenModel.get("forSale")}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <h4>Description</h4>
+            <p>${givenModel.get("description")}</p>`
+  },
+
+  render: function(givenModel){
+    this.el.innerHTML = this._singleListingTemplate(givenModel);
+  }
+})
