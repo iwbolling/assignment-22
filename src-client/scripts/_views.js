@@ -9,10 +9,18 @@ import {MegsListingModel,MegsListingCollection} from "./_models.js";
 export const AllListingsView = Backbone.View.extend({
   el: ".route-container",
 
+  events: {"click .item-pane" : "handleItemPaneClick"},
+
+  handleItemPaneClick: function(evt){
+    console.log(evt);
+    let clickedItemID = evt.currentTarget.dataset.id;
+    window.location.hash = `item/${clickedItemID}`;
+  },
+
   _allListingsTemplate: function(listOModels){
     let listingsThumbnails = listOModels.map(function(item){
       return `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="item-pane thumbnail">
+                <div class="item-pane thumbnail" data-id="${item.get("_id")}">
                   <img src="${item.get("imgLink")}">
                   <div class="caption">
                     <h2>${item.get("item")}</h2>

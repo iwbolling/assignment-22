@@ -5014,4 +5014,31 @@ button.close {
 * {
   box-sizing: border-box; }
 
+#app-container {
+  background-color: #5A3D74; }
+
+#app-container h1 {
+  color: #FFF;
+  margin: 0;
+  padding: 16px; }
+
+.route-container {
+  background-color: #494277; }
+
+.item-pane {
+  background-color: #7F3E6F;
+  border: 4px solid #4B0038; }
+
+.columns-container {
+  font-size: 0; }
+
+.image-column, .info-column {
+  display: inline-block; }
+
+.info-column {
+  font-size: 16px; }
+
+.info-column td {
+  padding-left: 16px; }
+
 /*# sourceMappingURL=styles.css.map*/
