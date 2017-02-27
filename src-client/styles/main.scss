@@ -1,15 +1,4 @@
-*{
-	box-sizing: border-box;
-}
+// IMPORTED LIBRARIES
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
-body{
-	background: limegreen;
-}
-
-$txt-color: #333;
-
-h2{
-	color: $txt-color;
-	border-bottom: 4px solid $txt-color;
-}
-
+*{box-sizing: border-box;}
